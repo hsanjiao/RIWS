@@ -12,13 +12,13 @@ class AcapellasItem(scrapy.Item):
     title = scrapy.Field()		# Título
     author = scrapy.Field()		# Autor
     date = scrapy.Field()		# Fecha
-    duration = scrapy.Field()		# Duración (s)
-    genre = scrapy.Field()		# Género (estilo)
-    time_signature = scrapy.Field()	# Compás
-    key = scrapy.Field()		# Escala
-    gender = scrapy.Field()		# Género (sexo)
-    file_size = scrapy.Field()		# Tamaño archivo
-    usage = scrapy.Field()		# Licencia
-    description = scrapy.Field()	# Descripción
-    others = scrapy.Field()		# Otros tags
+    # duration = scrapy.Field()		# Duración (s)
+    # genre = scrapy.Field()		# Género (estilo)
+    # time_signature = scrapy.Field()	# Compás
+    # key = scrapy.Field()		# Escala
+    # gender = scrapy.Field()		# Género (sexo)
+    # file_size = scrapy.Field()		# Tamaño archivo
+    # usage = scrapy.Field()		# Licencia
+    # description = scrapy.Field()	# Descripción
+    # others = scrapy.Field()		# Otros tags
     pass
