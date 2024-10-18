@@ -45,7 +45,8 @@ class AcapellasSpider(scrapy.Spider):
                 yield item       
             a+=1 
         
-        # next_page = response.css('ul.pagination a::attr(href)').get()
-        # if next_page is not None:
-        #     next_page = response.urljoin(next_page)
-        #     yield scrapy.Request(next_page, callback=self.parse)
+	next_page = response.css('li.page-item span.page-link a[rel*="next"]::attr(href)').get()
+        next_page_url = response.urljoin(next_page)
+        print(f"Following next unvisited page: {next_page_url}")
+        yield scrapy.Request(next_page_url, callback=self.parse)
+
