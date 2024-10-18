@@ -12,7 +12,7 @@ class AcapellasItem(scrapy.Item):
     title = scrapy.Field()		# Título
     author = scrapy.Field()		# Autor
     date = scrapy.Field()		# Fecha
-    # duration = scrapy.Field()		# Duración (s)
+    duration = scrapy.Field()		# Duración (s)
     genre = scrapy.Field()		# Género (estilo)
     time_signature = scrapy.Field()	# Compás
     key = scrapy.Field()		# Escala

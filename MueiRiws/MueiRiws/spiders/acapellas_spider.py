@@ -21,6 +21,7 @@ class AcapellasSpider(scrapy.Spider):
                 item["title"] = div.css('a.player-title::text').get()
                 item["date"] = div.css('div.ms-1 span::text').get()
                 item["author"] = div.css('span.text-nowrap a::text').get()
+                item["duration"] = div.css('div.player-buttons div.jp-timer span::attr(data-bs-title)').get()
             elif "tag-wrapper" in className:
                 item["other_tags"] = []
                 for tag in div.css('a'):
@@ -31,7 +32,7 @@ class AcapellasSpider(scrapy.Spider):
                         item["time_signature"] = tag.css('::text').get()
                     elif "is in the key of" in attr_dataBsTitle:
                         item["key"] = tag.css('::text').get() #extract only value remove 'Key : '
-                    elif "vocals" in attr_dataBsTitle:
+                    elif "Male" in attr_dataBsTitle or "Female" in attr_dataBsTitle:
                         item["gender"] = tag.css('::text').get()
                     elif "File Size" in attr_dataBsTitle:
                         item["file_size"] = tag.css('::text').get()
@@ -44,7 +45,7 @@ class AcapellasSpider(scrapy.Spider):
                 yield item       
             a+=1 
         
-        # next_page = response.css('li.next a::attr(href)').get()
+        # next_page = response.css('ul.pagination a::attr(href)').get()
         # if next_page is not None:
         #     next_page = response.urljoin(next_page)
         #     yield scrapy.Request(next_page, callback=self.parse)
