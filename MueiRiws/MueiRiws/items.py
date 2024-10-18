@@ -16,6 +16,7 @@ class AcapellasItem(scrapy.Item):
     genre = scrapy.Field()		# Género (estilo)
     time_signature = scrapy.Field()	# Compás
     key = scrapy.Field()		# Escala
+    bpm = scrapy.Field()        # beat per minute
     gender = scrapy.Field()		# Género (sexo)
     file_size = scrapy.Field()		# Tamaño archivo
     usage = scrapy.Field()		# Licencia

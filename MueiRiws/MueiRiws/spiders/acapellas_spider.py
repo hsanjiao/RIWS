@@ -32,6 +32,8 @@ class AcapellasSpider(scrapy.Spider):
                         item["time_signature"] = tag.css('::text').get()
                     elif "is in the key of" in attr_dataBsTitle:
                         item["key"] = tag.css('::text').get() #extract only value remove 'Key : '
+                    elif "bpm" in attr_dataBsTitle:
+                        item["bpm"] = tag.css('::text').get()
                     elif "Male" in attr_dataBsTitle or "Female" in attr_dataBsTitle:
                         item["gender"] = tag.css('::text').get()
                     elif "File Size" in attr_dataBsTitle:
@@ -45,7 +47,7 @@ class AcapellasSpider(scrapy.Spider):
                 yield item       
             a+=1 
         
-	next_page = response.css('li.page-item span.page-link a[rel*="next"]::attr(href)').get()
+        next_page = response.css('li.page-item span.page-link a[rel*="next"]::attr(href)').get()
         next_page_url = response.urljoin(next_page)
         print(f"Following next unvisited page: {next_page_url}")
         yield scrapy.Request(next_page_url, callback=self.parse)
